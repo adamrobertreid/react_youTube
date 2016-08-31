@@ -3,7 +3,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import SearchBar from './components/search_bar';
+//import code, need to give file reference to component - relative path
+import SearchBar from './components/search_bar'; // importing searchbar from component
+
 
 const API_KEY = 'AIzaSyALK8sqswn95JrDkmgWK8b-EqltGyDpiUE';
 
@@ -13,7 +15,7 @@ const App = () => {  //const means constant es6 it'll never change
   return (
   <div>
     <SearchBar />
-  </div>  //html in javascript is JSX
+  </div>             
   );
 }
 
