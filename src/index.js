@@ -15,7 +15,7 @@ const App = () => {  //const means constant es6 it'll never change
   return (
   <div>
     <SearchBar />
-  </div>             
+  </div>
   );
 }
 
