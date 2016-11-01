@@ -1,26 +1,36 @@
-//Import React as JavaScript module
+//Import React as JavaScript module and component
 //need to make sure this file has access to react.
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
-
 //import code, need to give file reference to component - relative path
 import SearchBar from './components/search_bar'; // importing searchbar from component
+import VideoList from './components/video_list';
+const API_KEY = 'AIzaSyALK8sqswn95JrDkmgWK8b-EqltGyDpiUE'; // youtube api key
 
-const API_KEY = 'AIzaSyALK8sqswn95JrDkmgWK8b-EqltGyDpiUE';
 
-YTSearch({key: API_KEY, term: 'surfboards'}, function(data){
-  console.log(data);
-});
 
- // create a new component. This component should produce
- //some HTML
-const App = () => {  //const means constant es6 it'll never change
-  return (
-  <div>
-    <SearchBar />
-  </div>
-  );
+ // create a new component. This component should produce HTML
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { videos: [] };
+
+    YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => {
+      this.setState({ videos });
+      // this.setState({ videos: videos }) in ES6
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <SearchBar />
+        <VideoList videos={this.state.videos} />
+      </div>
+    );
+  }
 }
 
 
